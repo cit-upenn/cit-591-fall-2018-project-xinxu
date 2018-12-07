@@ -31,6 +31,7 @@ import javafx.scene.control.Hyperlink;
 public class Gui {
 
 	
+	
 	public static void main(String[] args) throws IOException {
 		
 		JFrame frame = new JFrame();
