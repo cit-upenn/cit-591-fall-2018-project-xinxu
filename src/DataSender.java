@@ -1,4 +1,3 @@
-package Map;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -8,18 +7,25 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public class DataSender {
-	static String readFile(String filePath)
-    {
-        File fileToBeModified = new File(filePath);
-         
+	
+	private File fileName;
+	
+	DataSender(String filename){
+		this.fileName = new File(filename);
+	}
+	
+	
+	public String readFile()
+    {    
         String oldContent = "";
          
         BufferedReader reader = null;
          
+        
          
         try
         {
-            reader = new BufferedReader(new FileReader(fileToBeModified));
+            reader = new BufferedReader(new FileReader(fileName));
              
             //Reading all the lines of input hmtl file into oldContent
              
@@ -45,8 +51,7 @@ public class DataSender {
 
     }
 	
-	static void changeFile(String filePath, int caseValue, String oldContent, String newString) {
-		File fileToBeModified = new File(filePath);
+	public void changeFile(int caseValue, String oldContent, String newString) {
 		FileWriter writer = null;
 		int index = 0;
         
@@ -75,7 +80,7 @@ public class DataSender {
 	         
 	        //Rewriting the input text file with newContent
 	         
-	        writer = new FileWriter(fileToBeModified);
+	        writer = new FileWriter(fileName);
 	         
 	        writer.write(newContent);
 	        
@@ -87,20 +92,6 @@ public class DataSender {
         }
 	}
      
-    public static void main(String[] args)
-    {	
-    	ArrayList<String> locations = new ArrayList<>();
-    	locations.add("Paris");
-    	locations.add("Rome");
-    	locations.add("Barcelona");
-    	
-        for(int i = 0; i < 3; i++) {
-        	String oldContent = readFile("Geocoding Sample.html");
-        	changeFile("Geocoding Sample.html", i, oldContent, locations.get(i));
-        }
-         
-        System.out.println("done");
-    }
 
 
 }

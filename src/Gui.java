@@ -1,5 +1,6 @@
 
 import java.awt.BorderLayout;
+import java.awt.Desktop;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -69,30 +70,74 @@ public class Gui {
 		public void actionPerformed(ActionEvent e) {
 			String author = textField.getText().trim();
 			ArrayList<String> ts = new ArrayList<String>();
+			ArrayList<String> ls = new ArrayList<String>();
+			ArrayList<String> ls20 = new ArrayList<String>();
+			ArrayList<String> tls = new ArrayList<String>();
 			ts.addAll(aa.getTitle(author));	
 			
+			for (int i=0;i<ts.size();i++) {
+				ls.add(aa.getInfo(ts.get(i)).get(0));
+			}
+			
+			
+			if (ls.size() > 20) {
+				for(int i=0;i<20;i++) {
+					ls20.add(ls.get(i));    //20 locations
+					tls.add(ts.get(i)+", "+ls.get(i)); //20 "titles, locations"
+				}		
+			}else {
+				ls20.addAll(ls);
+				for(int i=0;i<ls.size();i++) {
+					tls.add(ts.get(i)+","+ls.get(i));
+				}
+			}
+			
+			
+					
+			ls.add(aa.getInfo(aa.getTitle(author).get(0)).get(0));	
 			
 			JFrame frame1 = new JFrame();
-			frame1.setSize(700,400);		
+			frame1.setSize(1000,1000);		
 			frame1.setTitle("Artworks");
-		
+			
 			JPanel panel1 = new JPanel();
-			Box box = Box.createVerticalBox();
+			JPanel panel2 = new JPanel();
+			JButton b = new JButton("Where are they");	
+			panel2.add(b);
 			ArrayList<JButton> jls = new ArrayList<JButton>();
 			for(int i=0;i<ts.size();i++) {
 			JButton jl = new JButton(ts.get(i));
 			jls.add(jl);
-			box.add(jl);
+			panel1.add(jl);
 			}
-			JScrollPane scrollPane = new JScrollPane(box);
-			JScrollBar vbar=new JScrollBar(JScrollBar.VERTICAL, 30, 40, 0, 500);
-			JButton b = new JButton("Where are they");	
-			panel1.add(b);
-			frame1.add(scrollPane);
-			frame1.add(vbar, BorderLayout.EAST);
-			frame1.add(box);
+			
+			 b.addActionListener(new ActionListener() {
+					
+					@Override
+					public void actionPerformed(ActionEvent e) {
+						String l  = ls.get(0);
+						DataSender ds = new DataSender ("Geocoding Sample.html");
+						String oldContent = ds.readFile();
+						ds.changeFile(0, oldContent, l);
+						
+						if (Desktop.isDesktopSupported()) {
+						    try {
+						        File myFile = new File("Geocoding Sample.html");
+						        Desktop.getDesktop().open(myFile);
+						    } catch (IOException ex) {
+						       
+						    }
+						}
+			
+					}
+			 });
+			
+			
+			
+			frame1.add(panel2);
+			//frame1.add(panel1);
 			frame1.setVisible(true);
-			frame1.pack();
+			//frame1.pack();
 			frame1.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 			
 			for(int i=0;i<ts.size();i++) {
@@ -102,13 +147,11 @@ public class Gui {
 					@Override
 					public void actionPerformed(ActionEvent e) {
 			
-	        ArrayList<String> info = new ArrayList<String>();
-	   
+	        ArrayList<String> info = new ArrayList<String>(); 
 			info = aa.getInfo(title); 
 			String url = info.get(5);
 			url = url.replaceFirst("html","art");
 			url = url.replaceFirst("html","jpg");
-
 			
 			URL img = null;
 			try {
