@@ -86,15 +86,16 @@ public class Gui {
 			JFrame frame1 = new JFrame();
 			frame1.setTitle("Artworks");		
 			JPanel panel1 = new JPanel();
-			
+			JPanel panel2 = new JPanel();
 			JButton b = new JButton("Where are they");	
+			frame1.setLayout(new BorderLayout());
 			panel1.add(b);
-			panel1.setLayout(new GridLayout(25,6));
+			panel2.setLayout(new GridLayout(25,6));
 			ArrayList<JButton> jls = new ArrayList<JButton>();
 			for(int i=0;i<ts.size();i++) {
 			JButton jl = new JButton(ts.get(i));
 			jls.add(jl);
-			panel1.add(jl);
+			panel2.add(jl);
 			}
 			
 			 b.addActionListener(new ActionListener() {
@@ -118,9 +119,8 @@ public class Gui {
 					}
 			 });
 					
-			
-			frame1.add(panel1);
-		
+			frame1.add(panel1,BorderLayout.NORTH);
+			frame1.add(panel2,BorderLayout.SOUTH);
 			frame1.pack();
 			frame1.setVisible(true);
 			frame1.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -147,8 +147,7 @@ public class Gui {
 			
 			InfoLocationWindow ilw = new InfoLocationWindow();
 			ilw.infoLocation(title, author, info, img);
-			
-			
+				
 		}
 	});
 			}
