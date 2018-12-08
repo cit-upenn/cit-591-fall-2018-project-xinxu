@@ -1,7 +1,10 @@
 
 import java.awt.BorderLayout;
 import java.awt.Desktop;
+import java.awt.Dimension;
 import java.awt.FlowLayout;
+import java.awt.GridLayout;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
@@ -34,30 +37,11 @@ public class Gui {
 	
 	
 	public static void main(String[] args) throws IOException {
-		
-		JFrame frame = new JFrame();
-		frame.setSize(700,400);		
-		frame.setTitle("Art Searcher");	
-	
-		JPanel panel = new JPanel();
-		
-		JLabel label = new JLabel("The Name of Artist:");	
-		JTextField textField = new JTextField(20);
 		JButton button = new JButton("Search");	
-		String imageLocation = "Water_Lilies.jpg";
-		BufferedImage pic = ImageIO.read(new File(imageLocation));
-		JLabel picture = new JLabel(new ImageIcon(pic));
-		
-		
-		panel.add(label);
-		panel.add(textField);
-		panel.add(button); 
-		panel.add(picture);
-		
-		frame.add(panel);
-		frame.pack();
-		frame.setVisible(true);	
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		BufferedImage ex = ImageIO.read(new File("Wheatfield_with_crows.jpg"));
+		JTextField textField = new JTextField(20);
+		ArtSearcherWindow asw = new ArtSearcherWindow();
+		asw.artSearcher(button,ex,textField );
 		
 		CatalogFileReader cfr = new CatalogFileReader("acatalog.csv");
 		ArrayList<Artwork> aws = cfr.readCatalog();
@@ -73,6 +57,11 @@ public class Gui {
 			ArrayList<String> ls = new ArrayList<String>();
 			ArrayList<String> ls20 = new ArrayList<String>();
 			ArrayList<String> tls = new ArrayList<String>();
+			
+			if(aa.getTitle(author).isEmpty()) {
+				ErrorWindow ew = new ErrorWindow();
+				ew.errorWindow(ex);
+			}else {
 			ts.addAll(aa.getTitle(author));	
 			
 			for (int i=0;i<ts.size();i++) {
@@ -91,19 +80,16 @@ public class Gui {
 					tls.add(ts.get(i)+","+ls.get(i));
 				}
 			}
-			
-			
-					
+							
 			ls.add(aa.getInfo(aa.getTitle(author).get(0)).get(0));	
 			
 			JFrame frame1 = new JFrame();
-			frame1.setSize(1000,1000);		
-			frame1.setTitle("Artworks");
-			
+			frame1.setTitle("Artworks");		
 			JPanel panel1 = new JPanel();
-			JPanel panel2 = new JPanel();
+			
 			JButton b = new JButton("Where are they");	
-			panel2.add(b);
+			panel1.add(b);
+			panel1.setLayout(new GridLayout(25,6));
 			ArrayList<JButton> jls = new ArrayList<JButton>();
 			for(int i=0;i<ts.size();i++) {
 			JButton jl = new JButton(ts.get(i));
@@ -131,14 +117,13 @@ public class Gui {
 			
 					}
 			 });
+					
 			
-			
-			
-			frame1.add(panel2);
-			//frame1.add(panel1);
+			frame1.add(panel1);
+		
+			frame1.pack();
 			frame1.setVisible(true);
-			//frame1.pack();
-			frame1.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+			frame1.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 			
 			for(int i=0;i<ts.size();i++) {
 		     String title = ts.get(i);
@@ -160,36 +145,14 @@ public class Gui {
 				e1.printStackTrace();
 			}
 			
-			ImageIcon image = new ImageIcon(img);
-			JLabel p = new JLabel("", image, JLabel.CENTER);
-			
-			JFrame frame2 = new JFrame();
-			frame2.setSize(400,400);
-			frame2.setTitle("Info and Location");
-			JPanel panel2 = new JPanel();
-			JLabel label3 = new JLabel("<html>"+
-			"Title: "+title+"<br/>"+
-			"Artist: "+author+"<br/>"+
-			"Lifespan: "+info.get(5)+"<br/>"+
-			"Date: "+info.get(1)+"<br/>"+
-			"School: "+info.get(2)+"<br/>"+
-			"Technique: "+info.get(3)+"<br/>"+
-			"Type: "+info.get(4)+"<br/>"+
-			"Form: "+info.get(6)+"<br/>"+
-			"Location: "+info.get(0)+"<br/>"+
-			"<html>");			
-			panel2.add(p);
-			panel2.add(label3);	
-			frame2.add(panel2);
-			frame2.setVisible(true);
-			frame2.pack();
-			frame2.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+			InfoLocationWindow ilw = new InfoLocationWindow();
+			ilw.infoLocation(title, author, info, img);
 			
 			
 		}
 	});
 			}
-				
+		}		
 		}
 		});
 	}
