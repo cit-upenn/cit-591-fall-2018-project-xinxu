@@ -18,7 +18,7 @@ public class ErrorWindow {
 		JPanel errorpanel = new JPanel();
 		errorframe.setTitle("Oops!");
 		JLabel message = new JLabel("<html> Oops! Something went wrong. <br/>"+
-		        "Incompatible name format or Unfounded artist <br/>"+
+		        "Incompatible name format or unfound artist. <br/>"+
 		        "<html>"
 				);
 		

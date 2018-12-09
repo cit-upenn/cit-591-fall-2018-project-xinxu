@@ -17,7 +17,7 @@ public class InfoLocationWindow {
 	public void infoLocation(String title, String author, ArrayList<String> info, URL img) {
 		JFrame frame2 = new JFrame();
 		//frame2.setSize(400,400);
-		frame2.setTitle("Info and Location");
+		frame2.setTitle("Information");
 		
 		ImageIcon image = new ImageIcon(img);
 		JLabel p = new JLabel("", image, JLabel.CENTER);

@@ -100,6 +100,7 @@ public class Gui {
 			JPanel panel1 = new JPanel();
 			JPanel panel2 = new JPanel();
 			JButton b = new JButton("Where are they");	
+			b.setPreferredSize(new Dimension(200, 40));
 			frame1.setLayout(new BorderLayout());
 			panel1.add(b);
 			panel2.setLayout(new GridLayout(25,6));

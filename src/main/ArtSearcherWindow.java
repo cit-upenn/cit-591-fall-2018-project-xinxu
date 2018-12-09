@@ -22,7 +22,7 @@ public class ArtSearcherWindow {
 		frame.setSize(700,400);		
 		frame.setTitle("Art Searcher");	
 		JPanel panel = new JPanel();	
-		JLabel label = new JLabel("The Name of Artist:");	
+		JLabel label = new JLabel("Name of Artist:");	
 		String imageLocation = "Water_Lilies.jpg";
 		BufferedImage pic = ImageIO.read(new File(imageLocation));
 		JLabel picture = new JLabel(new ImageIcon(pic));
