@@ -80,7 +80,7 @@ public class DataSender {
 	        }
 	        
 	        for(int i = startTitleIndex;;i++) {
-	        	if(oldContent.charAt(i) == ('<')) {
+	        	if(oldContent.charAt(i) == ('<') && oldContent.charAt(i+1)==('/')) {
 	        		endTitleIndex = i - 1;
 	        		break;
 	        	}

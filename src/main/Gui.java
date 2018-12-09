@@ -84,12 +84,14 @@ public class Gui {
 			
 			for(int i = 1; i < ls10.size();i++) {
 				for(int j = i - 1; j >= 0; j--) {
-					if(ls10.get(i) == ls10.get(j)) {
-						tls.set(i, tls.get(j)+ "\n" + tls.get(i));
+					if(ls10.get(i).equals(ls10.get(j))) {
+						tls.set(i, tls.get(j)+ "<br/>" + tls.get(i));
+						break;
 					}
 				}
 			}
 			
+		
 							
 			ls.add(aa.getInfo(aa.getTitle(author).get(0)).get(0));	
 			
