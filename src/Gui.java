@@ -73,6 +73,7 @@ public class Gui {
 				for(int i=0;i<20;i++) {
 					ls20.add(ls.get(i));    //20 locations
 					tls.add(ts.get(i)+", "+ls.get(i)); //20 "titles, locations"
+				
 				}		
 			}else {
 				ls20.addAll(ls);
@@ -80,6 +81,15 @@ public class Gui {
 					tls.add(ts.get(i)+","+ls.get(i));
 				}
 			}
+			
+			for(int i = 1; i < ls20.size();i++) {
+				for(int j = i - 1; j >= 0; j--) {
+					if(ls20.get(i) == ls20.get(j)) {
+						tls.set(i, tls.get(j)+ "\n" + tls.get(i));
+					}
+				}
+			}
+			
 							
 			ls.add(aa.getInfo(aa.getTitle(author).get(0)).get(0));	
 			
@@ -102,10 +112,31 @@ public class Gui {
 					
 					@Override
 					public void actionPerformed(ActionEvent e) {
-						String l  = ls.get(0);
 						DataSender ds = new DataSender ("Geocoding Sample.html");
-						String oldContent = ds.readFile();
-						ds.changeFile(0, oldContent, l);
+						
+						if(ls20.size() == 20) {
+							for(int i = 0; i < 20; i++) {
+								if(ls20.get(i).equals("Private collection")) {
+									ds.changeFile(i, " ", "");
+								}else {
+									ds.changeFile(i, ls20.get(i), tls.get(i));
+								}
+							}
+						}else {
+							int size = ls20.size();
+							for(int i = 0; i < 20; i++) {
+								if(i < size) {
+									if(ls20.get(i).equals("Private collection")) {
+										ds.changeFile(i, "", "");
+									}else {
+										ds.changeFile(i, ls20.get(i), tls.get(i));
+									}
+								}else {
+									ds.changeFile(i, "", "");
+								}
+							}	
+							
+						}
 						
 						if (Desktop.isDesktopSupported()) {
 						    try {
