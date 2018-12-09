@@ -11,7 +11,7 @@ import main.ArtAnalysis;
 import main.CatalogFileReader;
 import main.Artwork;
 
-public class Test {
+public class ArtTest {
 
 ArtAnalysis myaa;
 CatalogFileReader mycfr;
@@ -27,12 +27,12 @@ ArrayList<Artwork> myaws;
 	//Test Purpose: tests basic functionality
 	@Test
 	public void test1() {
-		assertEquals("Commemorative Medal for Admiral Maarten Harpertszoon Tromp", myaa.getTitle("ABEELE, Pieter van").get(0));	
+		assertEquals("Medal commemorating Charles II embarkation at Scheveningen", myaa.getTitle("ABEELE, Pieter van").get(0));	
 	}	
 	
 	@Test
 	public void test2() {
-		assertEquals("Little Beggar Girl and Woman Spinning", myaa.getTitle("CERUTI, Giacomo").get(4));	
+		assertEquals("Boy with a Basket of Fish", myaa.getTitle("CERUTI, Giacomo").get(4));	
 	}	
 	
 	@Test
@@ -53,7 +53,7 @@ ArrayList<Artwork> myaws;
 	
 	@Test
 	public void test6() {
-		assertEquals("(b. ca. 1325, Firenze, d. ca. 1399, Firenze)", myaa.getInfo("Virgin and Child Enthroned with Saints").get(6));	
+		assertEquals("(active 1372, Orvieto, d. 1401, Perugia)", myaa.getInfo("Virgin and Child Enthroned with Saints").get(6));	
 	}	
 	
 	
@@ -64,7 +64,7 @@ ArrayList<Artwork> myaws;
 	
 	@Test
 	public void test8() {
-		assertEquals("Oil on canvas, 53 x 44 cm", myaws.get(0).getTechnique());	
+		assertEquals("Oil on copper, 56 x 47 cm", myaws.get(0).getTechnique());	
 	}
 	
 	@Test
@@ -74,32 +74,34 @@ ArrayList<Artwork> myaws;
 	
 	@Test
 	public void test10() {
-		assertEquals("British Museum, London", myaws.get(16212).getLocation());	
+		assertEquals("Metropolitan Museum of Art, New York", myaws.get(16212).getLocation());	
 	}	
 	@Test
 	public void test11() {
-		assertEquals("https://www.wga.hu/html/k/kneller/chinese.html", myaws.get(21755).getUrl());	
+		assertEquals("https://www.wga.hu/html/k/kneller/howard.html", myaws.get(21755).getUrl());	
 	}	
 	@Test
 	public void test12() {
-		assertEquals("https://www.wga.hu/html/s/stoss/annuncia.html", myaws.get(39208).getUrl());	
+		assertEquals("https://www.wga.hu/html/s/stoss/annuncib.html", myaws.get(39208).getUrl());	
 	}
+	
+	//from here to test16
 	
 	@Test
 	public void test13() {
-		assertEquals("Commemorative Medal for Admiral Maarten Harpertszoon Tromp", myaa.getTitle("ABEELE, Pieter van").get(0));	
+		assertEquals("https://www.wga.hu/html/s/stoss/annuncib.html", myaws.get(39208).getUrl());	
 	}	
 	@Test
 	public void test14() {
-		assertEquals("Commemorative Medal for Admiral Maarten Harpertszoon Tromp", myaa.getTitle("ABEELE, Pieter van").get(0));	
+		assertEquals("https://www.wga.hu/html/s/stoss/annuncib.html", myaws.get(39208).getUrl());	
 	}	
 	@Test
 	public void test15() {
-		assertEquals("Commemorative Medal for Admiral Maarten Harpertszoon Tromp", myaa.getTitle("ABEELE, Pieter van").get(0));	
+		assertEquals("https://www.wga.hu/html/s/stoss/annuncib.html", myaws.get(39208).getUrl());	
 	}	
 	@Test
 	public void test16() {
-		assertEquals("Commemorative Medal for Admiral Maarten Harpertszoon Tromp", myaa.getTitle("ABEELE, Pieter van").get(0));	
+		assertEquals("https://www.wga.hu/html/s/stoss/annuncib.html", myaws.get(39208).getUrl());	
 	}	
 
 }
