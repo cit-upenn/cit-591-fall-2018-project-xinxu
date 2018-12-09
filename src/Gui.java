@@ -55,7 +55,7 @@ public class Gui {
 			String author = textField.getText().trim();
 			ArrayList<String> ts = new ArrayList<String>();
 			ArrayList<String> ls = new ArrayList<String>();
-			ArrayList<String> ls20 = new ArrayList<String>();
+			ArrayList<String> ls10 = new ArrayList<String>();
 			ArrayList<String> tls = new ArrayList<String>();
 			
 			if(aa.getTitle(author).isEmpty()) {
@@ -69,22 +69,22 @@ public class Gui {
 			}
 			
 			
-			if (ls.size() > 20) {
-				for(int i=0;i<20;i++) {
-					ls20.add(ls.get(i));    //20 locations
-					tls.add(ts.get(i)+", "+ls.get(i)); //20 "titles, locations"
+			if (ls.size() > 10) {
+				for(int i = 0; i < 10; i++) {
+					ls10.add(ls.get(i));    //10 locations
+					tls.add(ts.get(i)+", "+ls.get(i)); //10 "titles, locations"
 				
 				}		
 			}else {
-				ls20.addAll(ls);
+				ls10.addAll(ls);
 				for(int i=0;i<ls.size();i++) {
 					tls.add(ts.get(i)+","+ls.get(i));
 				}
 			}
 			
-			for(int i = 1; i < ls20.size();i++) {
+			for(int i = 1; i < ls10.size();i++) {
 				for(int j = i - 1; j >= 0; j--) {
-					if(ls20.get(i) == ls20.get(j)) {
+					if(ls10.get(i) == ls10.get(j)) {
 						tls.set(i, tls.get(j)+ "\n" + tls.get(i));
 					}
 				}
@@ -114,22 +114,22 @@ public class Gui {
 					public void actionPerformed(ActionEvent e) {
 						DataSender ds = new DataSender ("Geocoding Sample.html");
 						
-						if(ls20.size() == 20) {
-							for(int i = 0; i < 20; i++) {
-								if(ls20.get(i).equals("Private collection")) {
+						if(ls10.size() == 10) {
+							for(int i = 0; i < 10; i++) {
+								if(ls10.get(i).equals("Private collection")) {
 									ds.changeFile(i, " ", "");
 								}else {
-									ds.changeFile(i, ls20.get(i), tls.get(i));
+									ds.changeFile(i, ls10.get(i), tls.get(i));
 								}
 							}
 						}else {
-							int size = ls20.size();
-							for(int i = 0; i < 20; i++) {
+							int size = ls10.size();
+							for(int i = 0; i < 10; i++) {
 								if(i < size) {
-									if(ls20.get(i).equals("Private collection")) {
+									if(ls10.get(i).equals("Private collection")) {
 										ds.changeFile(i, "", "");
 									}else {
-										ds.changeFile(i, ls20.get(i), tls.get(i));
+										ds.changeFile(i, ls10.get(i), tls.get(i));
 									}
 								}else {
 									ds.changeFile(i, "", "");
