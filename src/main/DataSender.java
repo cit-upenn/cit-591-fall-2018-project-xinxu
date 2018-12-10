@@ -14,7 +14,7 @@ import java.util.ArrayList;
  */
 public class DataSender {
 	
-	private File fileName;
+	File fileName;
 	
 	/**
 	 * Constructor of the class
@@ -30,7 +30,7 @@ public class DataSender {
 	 * @param newAddress: location of the art
 	 * @param newTitle: title of the art
 	 */
-	public void changeFile(int caseValue, String newAddress, String newTitle) {
+	public String changeFile(int caseValue, String newAddress, String newTitle) {
         String oldContent = "";
         BufferedReader reader = null;
 		FileWriter writer = null;
@@ -115,9 +115,12 @@ public class DataSender {
 	        writer.write(newContent);
 	        
 	        writer.close();
+	        
+	        return newContent;
 		}catch (IOException e){
 			
             e.printStackTrace();
+            return "Error reading file!";
         }
 	}     
 

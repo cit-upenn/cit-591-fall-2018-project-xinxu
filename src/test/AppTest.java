@@ -9,6 +9,7 @@ import org.junit.jupiter.api.Test;
 
 import main.ArtAnalysis;
 import main.CatalogFileReader;
+import main.DataSender;
 import main.Artwork;
 
 public class AppTest {
@@ -16,12 +17,14 @@ public class AppTest {
 ArtAnalysis myaa;
 CatalogFileReader mycfr;
 ArrayList<Artwork> myaws;
+DataSender ds;
 	
 	@BeforeEach
 	public void setUp() throws FileNotFoundException {			
 		mycfr = new CatalogFileReader("catalog.csv");
 		myaws = mycfr.readCatalog();
 		myaa = new ArtAnalysis(myaws);
+		ds = new DataSender("Test1.txt");
 	}
 	
 	//Test Purpose: tests basic functionality
@@ -106,6 +109,11 @@ ArrayList<Artwork> myaws;
 	@Test
 	public void test17() {
 		assertEquals("1501-1550", myaws.get(34000).getTimeframe());	
+	}	
+	
+	@Test
+	public void test18() {
+		assertEquals("abcde<div id = \"address0\">abcfg</div>abcde<div id = \"title0\">abcta</div>", ds.changeFile(0, "abcfg", "abcta"));	
 	}	
 	
 	
