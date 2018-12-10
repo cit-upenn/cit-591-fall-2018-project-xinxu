@@ -56,8 +56,8 @@ public class Gui {
 			String author = textField.getText().trim();
 			ArrayList<String> ts = new ArrayList<String>();
 			ArrayList<String> ls = new ArrayList<String>();
-			ArrayList<String> ls10 = new ArrayList<String>();
-			ArrayList<String> tls = new ArrayList<String>();
+			ArrayList<String> locationsForMap = new ArrayList<String>();
+			ArrayList<String> titlesForMap = new ArrayList<String>();
 			
 			if(aa.getTitle(author).isEmpty()) {
 				ErrorWindow ew = new ErrorWindow();
@@ -72,20 +72,21 @@ public class Gui {
 			
 			if (ls.size() > 10) {
 				for(int i=0;i<10;i++) {
-					ls10.add(ls.get(i));    //20 locations
-					tls.add(ts.get(i)+", "+ls.get(i)); //20 "titles, locations"
+					locationsForMap.add(ls.get(i));    //20 locations
+					titlesForMap.add(ts.get(i)+", "+ls.get(i)); //20 "titles, locations"
 				}		
 			}else {
-				ls10.addAll(ls);
+				locationsForMap.addAll(ls);
 				for(int i=0;i<ls.size();i++) {
-					tls.add(ts.get(i)+","+ls.get(i));
+					titlesForMap.add(ts.get(i)+","+ls.get(i));
 				}
 			}
 			
-			for(int i = 1; i < ls10.size();i++) {
+			for(int i = 1; i < locationsForMap.size();i++) {
 				for(int j = i - 1; j >= 0; j--) {
-					if(ls10.get(i).equals(ls10.get(j))) {
-						tls.set(i, tls.get(j)+ "<br/>" + tls.get(i));
+					if(locationsForMap.get(i).equals(locationsForMap.get(j))) {
+						titlesForMap.set(i, titlesForMap.get(j)+ "<br/>" + titlesForMap.get(i));
+						titlesForMap.set(j, " ");
 						break;
 					}
 				}
@@ -118,22 +119,22 @@ public class Gui {
 						
 						DataSender ds = new DataSender ("Geocoding Sample.html");
 						
-						if(ls10.size() == 10) {
+						if(locationsForMap.size() == 10) {
 							for(int i = 0; i < 10; i++) {
-								if(ls10.get(i).equals("Private collection")) {
+								if(locationsForMap.get(i).equals("Private collection")) {
 									ds.changeFile(i, " ", " ");
 								}else {
-									ds.changeFile(i, ls10.get(i), tls.get(i));
+									ds.changeFile(i, locationsForMap.get(i), titlesForMap.get(i));
 								}
 							}
 						}else {
-							int size = ls10.size();
+							int size = locationsForMap.size();
 							for(int i = 0; i < 10; i++) {
 								if(i < size) {
-									if(ls10.get(i).equals("Private collection")) {
+									if(locationsForMap.get(i).equals("Private collection")) {
 										ds.changeFile(i, " ", " ");
 									}else {
-										ds.changeFile(i, ls10.get(i), tls.get(i));
+										ds.changeFile(i, locationsForMap.get(i), titlesForMap.get(i));
 									}
 								}else {
 									ds.changeFile(i, " ", " ");

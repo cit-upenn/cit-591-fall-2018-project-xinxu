@@ -1,19 +1,35 @@
 package main;
 import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 
+/**
+ * Class that sends the location data and the painting info to the html file
+ * @author XuDF
+ *
+ */
 public class DataSender {
 	
 	private File fileName;
 	
+	/**
+	 * Constructor of the class
+	 * @param filename
+	 */
 	DataSender(String filename){
 		this.fileName = new File(filename);
 	}
 	
+	/**
+	 * method that pass the location data to the html file
+	 * @param caseValue: decides which location and title should be changed
+	 * @param newAddress: location of the art
+	 * @param newTitle: title of the art
+	 */
 	public void changeFile(int caseValue, String newAddress, String newTitle) {
         String oldContent = "";
         BufferedReader reader = null;
@@ -86,6 +102,7 @@ public class DataSender {
 	        	}
 	        }
 	        
+	        //replace the old locations and titles with new ones
 	        String s1 = oldContent.substring(0, startAddressIndex);
 	        String s2 = oldContent.substring(endAddressIndex + 1, startTitleIndex);
 	        String s3 = oldContent.substring(endTitleIndex + 1, oldContent.length());
@@ -98,30 +115,10 @@ public class DataSender {
 	        writer.write(newContent);
 	        
 	        writer.close();
-		}
-        catch (IOException e)
-        {
+		}catch (IOException e){
+			
             e.printStackTrace();
         }
-	}
-     
-//public static void main (String[] args) {
-//	ArrayList<String> address = new ArrayList<>();
-//	ArrayList<String> title = new ArrayList<>();
-//	
-//	for(int i = 0;i < 10 ;i++) {
-//		address.add(" ");
-//		title.add(" ");
-//		
-//	}
-//	
-//	DataSender ds = new DataSender("Geocoding Sample.html");
-//
-//	for(int i = 0; i < 10; i++) {
-//		ds.changeFile(i, address.get(i), title.get(i));
-//	}
-//
-//	System.out.println("done");
-//}
+	}     
 
 }
