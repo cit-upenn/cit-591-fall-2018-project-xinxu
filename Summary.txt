@@ -5,20 +5,20 @@ We developd a java application that allows users to search an artist' s painting
 Work Breakdown:
 
 Xin Xu:
-Data preparation
+Data Preparation
 Google Map API Integration
-java-javascript integration
+Java-Javascript Integration
 Junit Test
-User manual 
+User Manual 
  
 
 Keqin Zhou:
 Data Cleaning and Analysis
-Algorithm implementation
+Algorithm Implementation
 GUI
 Junit Test
 README.txt
 
-github link:
+Github Link:
 https://github.com/cit-upenn/cit-591-fall-2018-project-xinxu.git
 
