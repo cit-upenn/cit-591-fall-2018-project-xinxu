@@ -47,6 +47,7 @@ public class App {
 		CatalogFileReader cfr = new CatalogFileReader("acatalog.csv");
 		ArrayList<Artwork> aws = cfr.readCatalog();
 		ArtAnalysis aa = new ArtAnalysis(aws);
+		System.out.println(aws.get(34000).getTimeframe());
 
 	    button.addActionListener(new ActionListener() {
 		

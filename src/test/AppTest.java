@@ -19,7 +19,7 @@ ArrayList<Artwork> myaws;
 	
 	@BeforeEach
 	public void setUp() throws FileNotFoundException {			
-		mycfr = new CatalogFileReader("acatalog.csv");
+		mycfr = new CatalogFileReader("catalog.csv");
 		myaws = mycfr.readCatalog();
 		myaa = new ArtAnalysis(myaws);
 	}
@@ -101,5 +101,14 @@ ArrayList<Artwork> myaws;
 	public void test16() {
 		assertEquals("(b. ca. 1480, Venezia, d. 1556, Loreto)", myaa.getInfo("Santo Spirito Altarpiece").get(6));	
 	}	
+	
+	
+	@Test
+	public void test17() {
+		assertEquals("1501-1550", myaws.get(34000).getTimeframe());	
+	}	
+	
+	
+	
 
 }
