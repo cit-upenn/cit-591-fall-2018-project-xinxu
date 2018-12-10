@@ -20,7 +20,7 @@ public class DataSender {
 	 * Constructor of the class
 	 * @param filename
 	 */
-	DataSender(String filename){
+	public DataSender(String filename){
 		this.fileName = new File(filename);
 	}
 	

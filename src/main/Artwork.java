@@ -1,7 +1,7 @@
 package main;
 
 public class Artwork {
-	
+
 	private String author;
 	private String lifespan;
 	private String title;
@@ -13,8 +13,25 @@ public class Artwork {
 	private String type;
 	private String school;
 	private String timeframe;
-	
-	public Artwork(String author, String lifespan, String title, String date, String technique, String location, String url, String form, String type,String school, String timeframe) {
+
+	/**
+	 * Constructor of the class
+	 * 
+	 * @param author
+	 * @param lifespan
+	 * @param title
+	 * @param date
+	 * @param technique
+	 * @param location
+	 * @param url
+	 * @param form
+	 * @param type
+	 * @param school
+	 * @param timeframe
+	 * 
+	 */
+	public Artwork(String author, String lifespan, String title, String date, String technique, String location,
+			String url, String form, String type, String school, String timeframe) {
 		this.author = author;
 		this.lifespan = lifespan;
 		this.title = title;
@@ -27,7 +44,8 @@ public class Artwork {
 		this.school = school;
 		this.timeframe = timeframe;
 	}
-
+	
+    //getters and setters
 	public String getDate() {
 		return date;
 	}
@@ -107,8 +125,7 @@ public class Artwork {
 	public void setTitle(String title) {
 		this.title = title;
 	}
-	
-	
+
 	public String getSchool() {
 		return school;
 	}
@@ -116,6 +133,5 @@ public class Artwork {
 	public void setSchool(String school) {
 		this.school = school;
 	}
-	
 
 }
