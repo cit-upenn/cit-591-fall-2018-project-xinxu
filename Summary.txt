@@ -1,0 +1,23 @@
+Team members: Xin Xu, Keqin Zhou
+
+We developd a java application that allows users to search an artist' s paintings in our database through GUI and mark the top 10 paintings' locations on Google Map. The user can enter any artist in the input box and click on the button to search for the art work of that artist. If the artist is in the data base, all the titles of the artworks of the artist are displayed. The user can click on any of the artwork and the app will display the image and detailed information of the artwork. When the user clicks the "Where are they" button, a Google Map page will pop up in the default browser. The map will show the locations of at most 10 paintings.
+
+Work Breakdown:
+
+Xin Xu:
+Data preparation
+Google Map API Integration
+java-javascript integration
+Junit Test
+User manual 
+ 
+
+Keqin Zhou:
+Data Cleaning and Analysis
+Algorithm implementation
+GUI
+Junit Test
+README.txt
+
+github link:
+
