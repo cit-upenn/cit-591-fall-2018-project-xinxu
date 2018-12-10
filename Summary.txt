@@ -20,4 +20,5 @@ Junit Test
 README.txt
 
 github link:
+https://github.com/cit-upenn/cit-591-fall-2018-project-xinxu.git
 
