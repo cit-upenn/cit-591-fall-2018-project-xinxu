@@ -1,3 +1,7 @@
+CIT-591-Project-Art-Searcher
+
+This program is a java application that allows users to search for an artist' s paintings in our database through GUI and mark the top 10 paintings' locations on Google Map. 
+
 This project contains two packages with test and main. 
 
 The main contains the main class called App which constructs all related objects and builds several windows. There are three separate windows that builds three windows that are ArtSearcherWindow, Error Window and Information Window. 
@@ -13,4 +17,7 @@ The Geocoding sample.html takes in the locations and titles and generates relate
 
 The test contains test AppTest class that runs the test on all classes with coverage of 95-100% ( without testing GUI and setters in Artwork).
 Test files from test0.txt to test9.txt are used to test the DataSender class.
+
+Technology used: Google Map API
+Database obtained from: https://www.wga.hu/index1.html
 
