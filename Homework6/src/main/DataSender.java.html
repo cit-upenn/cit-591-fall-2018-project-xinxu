@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../../../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../../../jacoco-resources/report.gif" type="image/gif"/><title>DataSender.java</title><link rel="stylesheet" href="../../../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../../../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../../../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../../../index.html" class="el_report">AppTest (Dec 10, 2018 7:45:06 PM)</a> &gt; <a href="../../index.html" class="el_group">Homework6</a> &gt; <a href="../index.html" class="el_bundle">src</a> &gt; <a href="index.source.html" class="el_package">main</a> &gt; <span class="el_source">DataSender.java</span></div><h1>DataSender.java</h1><pre class="source lang-java linenums">package main;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.ArrayList;
+
+/**
+ * Class that sends the location data and the painting info to the html file
+ * @author XuDF
+ *
+ */
+public class DataSender {
+	
+	File fileName;
+	
+	/**
+	 * Constructor of the class
+	 * @param filename
+	 */
+<span class="fc" id="L23">	public DataSender(String filename){</span>
+<span class="fc" id="L24">		this.fileName = new File(filename);</span>
+<span class="fc" id="L25">	}</span>
+	
+	/**
+	 * method that pass the location data to the html file
+	 * @param caseValue: decides which location and title should be changed
+	 * @param newAddress: location of the art
+	 * @param newTitle: title of the art
+	 */
+	public String changeFile(int caseValue, String newAddress, String newTitle) {
+<span class="fc" id="L34">        String oldContent = &quot;&quot;;</span>
+<span class="fc" id="L35">        BufferedReader reader = null;</span>
+<span class="fc" id="L36">		FileWriter writer = null;</span>
+<span class="fc" id="L37">		int addressIndex = 0;</span>
+<span class="fc" id="L38">		int titleIndex = 0;</span>
+        
+		try {
+<span class="fc" id="L41">            reader = new BufferedReader(new FileReader(fileName));</span>
+            //Reading all the lines of input hmtl file into oldContent
+<span class="fc" id="L43">            String line = reader.readLine();</span>
+             
+<span class="fc bfc" id="L45" title="All 2 branches covered.">            while (line != null) </span>
+            {
+<span class="fc" id="L47">                oldContent = oldContent + line + System.lineSeparator();</span>
+<span class="fc" id="L48">                line = reader.readLine();</span>
+            }
+<span class="fc" id="L50">            reader.close();</span>
+			
+<span class="fc bfc" id="L52" title="All 2 branches covered.">	        if(caseValue == 0) {</span>
+<span class="fc" id="L53">	        	addressIndex = oldContent.indexOf(&quot;&lt;div id = \&quot;address0\&quot;&gt;&quot;);</span>
+<span class="fc" id="L54">	        	titleIndex = oldContent.indexOf(&quot;&lt;div id = \&quot;title0\&quot;&gt;&quot;);</span>
+<span class="fc bfc" id="L55" title="All 2 branches covered.">	        }else if(caseValue == 1) {</span>
+<span class="fc" id="L56">	        	addressIndex = oldContent.indexOf(&quot;&lt;div id = \&quot;address1\&quot;&gt;&quot;);</span>
+<span class="fc" id="L57">	        	titleIndex = oldContent.indexOf(&quot;&lt;div id = \&quot;title1\&quot;&gt;&quot;);</span>
+<span class="fc bfc" id="L58" title="All 2 branches covered.">	        }else if(caseValue == 2) {</span>
+<span class="fc" id="L59">		    	addressIndex = oldContent.indexOf(&quot;&lt;div id = \&quot;address2\&quot;&gt;&quot;);</span>
+<span class="fc" id="L60">		    	titleIndex = oldContent.indexOf(&quot;&lt;div id = \&quot;title2\&quot;&gt;&quot;);</span>
+<span class="fc bfc" id="L61" title="All 2 branches covered.">		    }else if(caseValue == 3) {</span>
+<span class="fc" id="L62">		    	addressIndex = oldContent.indexOf(&quot;&lt;div id = \&quot;address3\&quot;&gt;&quot;);</span>
+<span class="fc" id="L63">		    	titleIndex = oldContent.indexOf(&quot;&lt;div id = \&quot;title3\&quot;&gt;&quot;);</span>
+<span class="fc bfc" id="L64" title="All 2 branches covered.">		    }else if(caseValue == 4) {</span>
+<span class="fc" id="L65">		    	addressIndex = oldContent.indexOf(&quot;&lt;div id = \&quot;address4\&quot;&gt;&quot;);</span>
+<span class="fc" id="L66">		    	titleIndex = oldContent.indexOf(&quot;&lt;div id = \&quot;title4\&quot;&gt;&quot;);</span>
+<span class="fc bfc" id="L67" title="All 2 branches covered.">		    }else if(caseValue == 5) {</span>
+<span class="fc" id="L68">		    	addressIndex = oldContent.indexOf(&quot;&lt;div id = \&quot;address5\&quot;&gt;&quot;);</span>
+<span class="fc" id="L69">		    	titleIndex = oldContent.indexOf(&quot;&lt;div id = \&quot;title5\&quot;&gt;&quot;);</span>
+<span class="fc bfc" id="L70" title="All 2 branches covered.">		    }else if(caseValue == 6) {</span>
+<span class="fc" id="L71">		    	addressIndex = oldContent.indexOf(&quot;&lt;div id = \&quot;address6\&quot;&gt;&quot;);</span>
+<span class="fc" id="L72">		    	titleIndex = oldContent.indexOf(&quot;&lt;div id = \&quot;title6\&quot;&gt;&quot;);</span>
+<span class="fc bfc" id="L73" title="All 2 branches covered.">		    }else if(caseValue == 7) {</span>
+<span class="fc" id="L74">		    	addressIndex = oldContent.indexOf(&quot;&lt;div id = \&quot;address7\&quot;&gt;&quot;);</span>
+<span class="fc" id="L75">		    	titleIndex = oldContent.indexOf(&quot;&lt;div id = \&quot;title7\&quot;&gt;&quot;);</span>
+<span class="fc bfc" id="L76" title="All 2 branches covered.">		    }else if(caseValue == 8) {</span>
+<span class="fc" id="L77">		    	addressIndex = oldContent.indexOf(&quot;&lt;div id = \&quot;address8\&quot;&gt;&quot;);</span>
+<span class="fc" id="L78">		    	titleIndex = oldContent.indexOf(&quot;&lt;div id = \&quot;title8\&quot;&gt;&quot;);</span>
+<span class="pc bpc" id="L79" title="1 of 2 branches missed.">		    }else if(caseValue == 9) {</span>
+<span class="fc" id="L80">		    	addressIndex = oldContent.indexOf(&quot;&lt;div id = \&quot;address9\&quot;&gt;&quot;);</span>
+<span class="fc" id="L81">		    	titleIndex = oldContent.indexOf(&quot;&lt;div id = \&quot;title9\&quot;&gt;&quot;);</span>
+		    }
+	        //System.out.println(index);
+	        
+		    //Replacing oldString with newString in the oldContent
+<span class="fc" id="L86">	        int startAddressIndex = addressIndex + 21;</span>
+<span class="fc" id="L87">	        int endAddressIndex = 0;</span>
+<span class="fc" id="L88">	        int startTitleIndex = titleIndex + 19;</span>
+<span class="fc" id="L89">	        int endTitleIndex = 0;</span>
+	        
+<span class="fc" id="L91">	        for(int i = startAddressIndex;;i++) {</span>
+<span class="fc bfc" id="L92" title="All 2 branches covered.">	        	if(oldContent.charAt(i) == ('&lt;')) {</span>
+<span class="fc" id="L93">	        		endAddressIndex = i - 1;</span>
+<span class="fc" id="L94">	        		break;</span>
+	        	}
+	        }
+	        
+<span class="fc" id="L98">	        for(int i = startTitleIndex;;i++) {</span>
+<span class="pc bpc" id="L99" title="1 of 4 branches missed.">	        	if(oldContent.charAt(i) == ('&lt;') &amp;&amp; oldContent.charAt(i+1)==('/')) {</span>
+<span class="fc" id="L100">	        		endTitleIndex = i - 1;</span>
+<span class="fc" id="L101">	        		break;</span>
+	        	}
+	        }
+	        
+	        //replace the old locations and titles with new ones
+<span class="fc" id="L106">	        String s1 = oldContent.substring(0, startAddressIndex);</span>
+<span class="fc" id="L107">	        String s2 = oldContent.substring(endAddressIndex + 1, startTitleIndex);</span>
+<span class="fc" id="L108">	        String s3 = oldContent.substring(endTitleIndex + 1, oldContent.length());</span>
+<span class="fc" id="L109">	        String newContent = s1 + newAddress + s2 + newTitle + s3;</span>
+	         
+	        //Rewriting the input text file with newContent
+	         
+<span class="fc" id="L113">	        writer = new FileWriter(fileName);</span>
+	         
+<span class="fc" id="L115">	        writer.write(newContent);</span>
+	        
+<span class="fc" id="L117">	        writer.close();</span>
+	        
+<span class="fc" id="L119">	        return newContent;</span>
+<span class="nc" id="L120">		}catch (IOException e){</span>
+			
+<span class="nc" id="L122">            e.printStackTrace();</span>
+<span class="nc" id="L123">            return &quot;Error reading file!&quot;;</span>
+        }
+	}     
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.1.201803210924</span>AppTest (Dec 10, 2018 7:45:06 PM)</div></body></html>
