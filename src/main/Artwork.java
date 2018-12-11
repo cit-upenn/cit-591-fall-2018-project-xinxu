@@ -1,5 +1,12 @@
 package main;
 
+/**
+ * This class constructs Artwork object.
+ * 
+ * @author keqin zhou
+ *
+ */
+
 public class Artwork {
 
 	private String author;
@@ -44,8 +51,8 @@ public class Artwork {
 		this.school = school;
 		this.timeframe = timeframe;
 	}
-	
-    //getters and setters
+
+	// getters and setters
 	public String getDate() {
 		return date;
 	}
